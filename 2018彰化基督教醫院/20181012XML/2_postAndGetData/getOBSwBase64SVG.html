@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        .Button{width:120px;height:35px;}
+        .Result {margin:10px auto;width:90%;height:500px;}
+        .Box{width:50%;}
+        .Left{float:left;}
+        .Right{float:right;}
+    </style>
+</head>
+<body>
+
+   
+    <input id="postData" class="Button" type="button" value="postData" onclick="getData();" /> <br/>
+	
+	<div id="divSVG" ></div>
+ 
+</body>
+        <script>
+          
+            function getData() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", 'http://203.64.84.213:20100/baseR4/Observation/10122/_history/1', true);
+               // xhttp.setRequestHeader("Content-type", 'text/xml');
+                xhttp.onreadystatechange = function () {
+                  //  alert(this.readyState);
+                    if (this.readyState == 4) // && this.status == 201) 
+                    { ret = this.responseText;
+                     var jsonOBJ =JSON.parse(ret);
+					 jsonOBJ.component[0].valueString
+					//alert(jsonOBJ.component[0].valueString);
+					 document.getElementById("divSVG").innerHTML = atob(jsonOBJ.component[0].valueString);
+					// jsonOBJ.entry[i].resource.birthDate
+                    }
+                };
+                xhttp.send();
+            }  
+			
+            function postData() {
+               
+                var b64Data, retData;
+                b64Data = document.getElementById("Data").value;
+              //  alert(postData);
+			   document.getElementById("rpRet").innerHTML =  atob(b64Data); 
+            }
+
+      
+        </script>
+</html>

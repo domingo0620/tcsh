@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        .Button{width:120px;height:35px;}
+        .Result {margin:10px auto;width:90%;height:500px;}
+        .Box{width:50%;}
+        .Left{float:left;}
+        .Right{float:right;}
+    </style>
+</head>
+<body>
+
+   
+    <input id="postData" class="Button" type="button" value="postData" onclick="postData();" /> <br/>
+	
+	<div></div>
+    <div class="Left Box"> Input data <br/>	<textarea id="Data" class="Result"></textarea></div>
+    <div class="Right Box"> Response result <br/><textarea id="rpRet" class="Result"></textarea></div>
+
+
+</body>
+        <script>
+          
+
+            function postData() {
+               
+                var b64Data, retData;
+                b64Data = document.getElementById("Data").value;
+              //  alert(postData);
+			   document.getElementById("rpRet").innerHTML =  atob(b64Data); 
+            }
+
+      
+        </script>
+</html>
